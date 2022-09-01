@@ -237,6 +237,29 @@ public class InputHandler implements KeyListener, MouseInputListener, MouseWheel
 		return inputs;
 	}
 	
+	public boolean getPressed(String input) {
+		if (inputs.containsKey(input)) {
+			return inputs.get(input).isPressed();
+		} else
+			System.out.println("INP ERROR: Tried to access missing input '" + input + "'");
+		return false;
+	}
+	
+	public boolean getFresh(String input) {
+		if (inputs.containsKey(input)) {
+			return inputs.get(input).isFresh();
+		} else
+			System.out.println("INP ERROR: Tried to access missing input '" + input + "'");
+		return false;
+	}
+	
+	public void setFresh(String input, boolean toggle) {
+		if (inputs.containsKey(input)) {
+			inputs.get(input).toggleFresh(toggle);
+		} else
+			System.out.println("INP ERROR: Tried to access missing input '" + input + "'");
+	}
+	
 	public String tempToString() {
 		String string = "";
 		boolean first = true;
